@@ -139,6 +139,7 @@ module RubyAMF::Rails
     end
 
     def rubyamf_retrieve_association association
+      Rails.logger.debug("-[DEBUG] RubyAMF::Rails::Model.rubyamf_retrieve_association #{association}; #{self.class}")
       case self.class.reflect_on_association(association).macro
       when :has_many, :has_and_belongs_to_many
         send(association).to_a
